@@ -3,6 +3,35 @@ Nom: Tahiry
 prenom: Ny Aina Martin
 Numero d'inscription : UA 03238 FS 2024
 """
+"""
+algorythme de l exercice 1
+
+1. Définir une fonction appelée "afficher_table_verite" prenant un paramètre "fonction".
+2. Demander à l'utilisateur d'entrer les variables de la fonction en les séparant par des espaces et les stocker dans une liste appelée "variables".
+3. Construire l'en-tête des colonnes en utilisant la liste de variables et la fonction donnée. Concaténer les éléments avec le séparateur " | " et stocker le résultat dans une variable appelée "entete".
+4. Construire une ligne de séparation en utilisant le caractère "-" répété autant de fois que la longueur de l'en-tête et stocker le résultat dans une variable appelée "separateur".
+5. Afficher l'en-tête et la ligne de séparation.
+6. Calculer le nombre de variables en prenant la longueur de la liste de variables et le stocker dans une variable appelée "nb_variables".
+7. Générer toutes les combinaisons possibles de valeurs de variables en utilisant une boucle "for" de 0 à 2^nb_variables. Pour chaque valeur de la boucle, convertir le nombre en binaire et obtenir la valeur de chaque bit en utilisant une autre boucle "for" de 0 à nb_variables. Stocker chaque combinaison dans une liste appelée "combinaisons".
+8. Initialiser une liste vide appelée "valeurs_fonction".
+9. Pour chaque combinaison dans la liste "combinaisons", créer un dictionnaire de valeurs de variables en utilisant la fonction "zip" avec les variables et la combinaison. Stocker ce dictionnaire dans une variable appelée "valeurs_variables".
+10. Essayer d'évaluer la fonction booléenne donnée en utilisant la fonction "eval" avec la fonction et les valeurs de variables. Si une exception se produit pendant l'évaluation, attribuer la valeur 'Erreur' à une variable appelée "valeur_fonction". Sinon, convertir le résultat en entier et le stocker dans la variable "valeur_fonction".
+11. Ajouter la valeur de la fonction à la liste "valeurs_fonction".
+12. Pour chaque combinaison dans la liste "combinaisons", construire une chaîne de caractères représentant les valeurs de chaque combinaison et la valeur de la fonction en utilisant la méthode "join" avec le séparateur " | ". Afficher cette chaîne de caractères.
+13. Initialiser une liste vide appelée "formes_canoniques".
+14. Construire la forme disjonctive en utilisant une boucle "for" avec une variable "i" et une valeur "valeur" pour chaque élément de la liste "valeurs_fonction". Si la valeur est égale à 1, obtenir la combinaison correspondante à l'index "i" dans la liste "combinaisons". Pour chaque variable dans la liste "variables", si la valeur de la variable dans la combinaison est égale à 1, ajouter la variable à une liste "termes". Sinon, ajouter "not" suivi de la variable à la liste "termes". Concaténer les termes en utilisant le mot-clé "and" et entourer le résultat par des parenthèses. Ajouter cette forme disjonctive à une chaîne de caractères appelée "forme_disjonctive".
+15. Supprimer les quatre derniers caractères de la chaîne "forme_disjonctive" pour enlever le dernier "or" et l'espace précédent. Ajouter la forme disjonctive à la liste "formes_canoniques".
+16. Construire la forme conjonctive de manière similaire à l'étape 14, mais cette fois-ci en utilisant les valeurs égales à 0 dans la liste "valeurs_fonction". Ajouter la forme conjonctive à la chaîne "forme_conjonctive".
+17. Supprimer les cinq derniers caractères de la chaîne "forme_conjonctive" pour enlever le dernier "and" et l'espace précédent. Ajouter la forme conjonctive à la liste "formes_canoniques".
+18. Afficher le message "Formes canoniques :" suivi de chaque élément de la liste "formes_canoniques" avec un numéro correspondant
+
+
+"""
+"""
+voici le programe en python
+"""
+
+
 def afficher_table_verite(fonction):
    
 
