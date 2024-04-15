@@ -1,0 +1,83 @@
+"""
+Nom: Tahiry
+prenom: Ny Aina Martin
+Numero d'inscription : UA 03238 FS 2024
+"""
+def afficher_table_verite(fonction):
+   
+
+
+    entete = ' | '.join(variables + [fonction])
+    separateur = '-' * len(entete)
+    print(entete)
+    print(separateur)
+
+  
+    nb_variables = len(variables)
+    combinaisons = []
+    for i in range(2 ** nb_variables):
+        combinaison = []
+        for j in range(nb_variables):
+            combinaison.append((i // (2 ** j)) % 2)
+        combinaisons.append(combinaison)
+
+    
+    valeurs_fonction = []
+    for combinaison in combinaisons:
+        valeurs_variables = dict(zip(variables, combinaison))
+
+       
+        try:
+            valeur_fonction = int(eval(fonction, valeurs_variables))
+        except:
+            valeur_fonction = 'Erreur'
+
+        valeurs_fonction.append(valeur_fonction)
+
+        
+        valeurs = ' | '.join(str(v) for v in combinaison + [valeur_fonction])
+        print(valeurs)
+
+   
+    formes_canoniques = []
+
+    
+    forme_disjonctive = ""
+    for i, valeur in enumerate(valeurs_fonction):
+        if valeur == 1:
+            combinaison = combinaisons[i]
+            termes = []
+            for j, var in enumerate(variables):
+                if combinaison[j] == 1:
+                    termes.append(var)
+                else:
+                    termes.append("not " + var)
+            forme_disjonctive += "(" + " and ".join(termes) + ") or "
+    forme_disjonctive = forme_disjonctive[:-4] 
+    formes_canoniques.append(forme_disjonctive)
+
+   
+    forme_conjonctive = ""
+    for i, valeur in enumerate(valeurs_fonction):
+        if valeur == 0:
+            combinaison = combinaisons[i]
+            termes = []
+            for j, var in enumerate(variables):
+                if combinaison[j] == 0:
+                    termes.append(var)
+                else:
+                    termes.append("not " + var)
+            forme_conjonctive += "(" + " or ".join(termes) + ") and "
+    forme_conjonctive = forme_conjonctive[:-5]  
+    formes_canoniques.append(forme_conjonctive)
+
+
+    print("\nFormes canoniques :")
+    for i, forme in enumerate(formes_canoniques):
+        print(f"Forme {i + 1}: {forme}")
+
+variables = input("entrez les variables de votre fonction en les separants par des espaces ,exemple: x y z  :   ").split()
+
+fonction_booleenne = input("Entrez votre fonction booléenne en utilisant seullement les variables que vous venez d entrez avec les operateur : and , or et not; exemple : (x and not(y)) or z  : ")
+afficher_table_verite(fonction_booleenne)
+
